@@ -1,12 +1,13 @@
 import React from 'react';
 import DateTimeDisplay from './DateTimeDisplay';
 import { useCountdown } from './useCountdown';
+import beer_load from "../img/beer_anim.gif"
 
 const ExpiredNotice = () => {
   return (
     <div className="expired-notice">
-      <span>Expired!!!</span>
-      <p>Please select a future date and time.</p>
+      <img className='beer-loader' src={beer_load} alt="beer loader"/>
+      <p>C'est l'heure !!!</p>
     </div>
   );
 };
@@ -14,20 +15,15 @@ const ExpiredNotice = () => {
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
   return (
     <div className="show-counter">
-      <a
-        href="https://tapasadhikary.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="countdown-link"
-      >
-        <DateTimeDisplay value={days} type={'Days'} isDanger={days <= 3} />
+      <div className="countdown-link">
+        <DateTimeDisplay value={days} type={'Jours'} isDanger={days < 1} />
         <p>:</p>
-        <DateTimeDisplay value={hours} type={'Hours'} isDanger={false} />
+        <DateTimeDisplay value={hours} type={'Heures'} isDanger={false} />
         <p>:</p>
-        <DateTimeDisplay value={minutes} type={'Mins'} isDanger={false} />
+        <DateTimeDisplay value={minutes} type={'Minutes'} isDanger={false} />
         <p>:</p>
-        <DateTimeDisplay value={seconds} type={'Seconds'} isDanger={false} />
-      </a>
+        <DateTimeDisplay value={seconds} type={'Secondes'} isDanger={false} />
+      </div>
     </div>
   );
 };
